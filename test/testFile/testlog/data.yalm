@@ -1,0 +1,56 @@
+
+#
+test_cert_reg_receive:
+    -
+        -
+            context :
+                appID: 1103
+                transNo: 999999999
+                userName: ''
+                transType: '00'
+                authType: '20'
+                dn: eyJjYXJkTk8iOiIxMjM0NTY3ODkxMjM0NTY3ODkiLCJjYXJkVHlwZSI6IjAxIiwiY2FyZE5hbWUiOiJ0ZXN0In0
+                devices:
+                    deviceName: HUAWEI-P50
+                    deviceType: HUAWEI
+                    deviceID: ''
+                    deviceVersion: v-4.5.4
+        -
+            statusCode: 1200
+            description: OK
+    -
+        -
+            context :
+                appID: 1103
+                transNo: 999999999
+                userName: ''
+                transType: '00'
+                authType: '20'
+                dn: eyJjYXJkTk8iOiIxMjM0NTY3ODkxMjM0NTY3ODkiLCJjYXJkVHlwZSI6IjAxIiwiY2FyZE5hbWUiOiJ0ZXN0In0
+                devices:
+                    deviceName: HUAWEI-P50
+                    deviceType: HUAWEI
+                    deviceID: ''
+                    deviceVersion: v-4.5.4
+        -
+            statusCode: 1200
+            description: OK
+
+    -
+        -
+            context:
+                appID: 1103
+                transNo: 999999999
+                userName: ''
+                transType: '00'
+                authType: '20'
+                dn: eyJjYXJkTk8iOiIxMjM0NTY3ODkxMjM0NTY3ODkiLCJjYXJkVHlwZSI6IjAxIiwiY2FyZE5hbWUiOiJ0ZXN0In0
+                devices:
+                    deviceName: HUAWEI-P50
+                    deviceType: HUAWEI
+                    deviceID: ''
+                    deviceVersion: v-4.5.4
+        -
+            statusCode: 1200
+            description: OK
+

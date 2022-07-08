@@ -1,0 +1,9 @@
+1、安装node.js
+2、安装appium-client
+3、安装Android-tools
+4、安装appium-desktop
+5、安装Appium Inspector
+
+原理：appium-client端脚本充当客户端，发送请求给appium-desktop（appium-server），通过4723端口监听客户端请求，
+appium-desktop通过4724端口转发脚本给中间件Bootstrap.jar，Bootstrap调用UIautomator执行具体命令，最后Bootstrap
+将执行的结果返回给Appium server

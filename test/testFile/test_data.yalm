@@ -1,0 +1,681 @@
+#"1": "指纹：注册发起"
+test_fido_reg_receive :
+  context:
+    appID: 1103
+    transNo: '8888888888'
+    userName: ''
+    transType: "00"
+    authType: "00"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: ''
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+
+#"2": "指纹：注册完成"
+test_fido_reg_send :
+  context:
+    appID:  '1103'
+    transNo: '8888888888'
+    userName: ''
+    transType: "00"
+    authType: "00"
+    opType: "00"
+    ext: ''
+    from: '01'
+    devices:
+      deviceID: ''
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+      osVersion: 23
+      osType: android
+
+#"3": "指纹：证发起"
+test_fido_auth_receive :
+  context :
+    userName : ''
+    appID : 1103
+    transNo : 8888888888
+    transType : "00"
+    authType : ['00']
+    transactionText: MTIzNDU2
+    ext : eyJzaG93RmxhZyI6ICIwMCIsInNob3dUZXh0IjogIuaCqOato+WcqOS6pOaYkzEwMOWFgyJ9
+    devices :
+      deviceName : HUAWEI-P40
+      deviceType : HUAWEI
+      deviceID : ''
+
+#"4": "指纹：认证完成"
+test_fido_auth_send :
+  context :
+    userName : ''
+    transNo : 8888888888
+    transType : '00'
+    authType : ["00"]
+    appID : 1103
+
+#"5": "证书：注册发起"
+test_cert_reg_receive :
+  context :
+    appID : 1103
+    transNo : 999999999
+    userName : ''
+    transType : '00'
+    authType : '20'
+    dn : eyJjYXJkTk8iOiIxMjM0NTY3ODkxMjM0NTY3ODkiLCJjYXJkVHlwZSI6IjAxIiwiY2FyZE5hbWUiOiJ0ZXN0In0
+    devices :
+      deviceName : HUAWEI-P40
+      deviceType : HUAWEI
+      deviceID : ''
+      deviceVersion : v-4.5.4
+
+#"6": "证书：注册完成"
+test_cert_reg_send :
+  context:
+    appID: 1103
+    opType: '00'
+    transNo: 999999999
+    userName: ''
+    transType: '00'
+    authType: 20
+    devices:
+      deviceID: ''
+      deviceName: "HUAWEI NXT-AL10"
+      deviceType: "HUAWEI"
+      deviceAliasName: "HWNXT"
+      osVersion: 23
+      osType: "android"
+      imei: "869906024340331"
+      mac: "48:db:50:db:87:ad"
+    ext : ''
+    from : "01"
+
+#"7": "证书：更新证书状态为已安装"
+test_update_cert_status:
+  context:
+    userName: ''
+    appID : 1103
+    transNo : 999999999
+    keyID : ''
+
+#"8": "证书：认证发起"
+test_cert_auth_receive:
+  context:
+    appID: 1103
+    transNo: 999999999
+    userName: ''
+    transType: '00'
+    authType: ['20']
+    devices:
+      deviceName : HUAWEI NXT-AL10
+      deviceType : HUAWEI
+      deviceID : ''
+    transactionText: MTIzNDU2
+    ext: eyJzaG93RmxhZyI6IjAwIiwic2hvd1RleHQiOiLmlK_ku5gxMeWFgyJ9
+
+#"9": "证书：认证完成"
+test_cert_auth_send :
+  context:
+    userName : ''
+    transNo : 999999999
+    transType : '00'
+    authType : ['20']
+    appID : 1103
+    authToken : ''
+    authData : ''
+    extra : '0'
+    functionType: ''
+    ext: eyJzaG93RmxhZyI6IjAwIiwic2hvd1RleHQiOiLmlK_ku5gxMeWFgyJ9
+
+#"10": "指纹：注销"
+test_fido_delete :
+  context :
+    userName : ''
+    appID : 1103
+    transNo : 8888888888
+    authType: "00"
+    transType : "00"
+    deviceID : ''
+    from : "01"
+
+#"11": "证书：注销"
+test_cert_delete :
+  context :
+    userName : ''
+    appID : 1103
+    transNo : 999999999
+    authType: "20"
+    transType : "00"
+    deviceID : ''
+    from : "01"
+
+#"12": "设备查询"
+test_device_list :
+  context :
+    appID : 1103
+    transNo : test-66666666666
+    userName : ''
+
+#"13": "能力支持查询"
+test_support :
+  context :
+    transNo : test-66666666666
+    appID : 1103
+    authType : ['00','20']
+
+#"14": "能力支持查询_V2"
+test_v2_support :
+  context :
+    transNo : test-66666666666
+    transType : ['00']
+    appID : 1103
+    authType : ['00','20']
+    isBase64 : false
+
+#"15": "用户开通状态查询"
+test_reg_status :
+  context :
+    userName : ''
+    appID : 1103
+    transNo : test-66666666666
+    transType : ['00','20']
+    authType : ['00','01']
+    devices :
+      deviceName : HUAWEI NXT-AL10
+      deviceType : HUAWEI
+      deviceID : ''
+
+#"16": "计费设备查询"
+test_dev_costed :
+  context :
+    securityLevel : 2
+    deviceID : ''
+
+#"17": "获取用户注册信息"
+test_user_info :
+  context :
+    transNo : 'test-66666666666'
+    userName : ''
+    appID : '1103'
+    authType : ['00']
+    transType : ['00']
+    deviceID : ''
+
+
+#"18": "fido指纹，注册发起：验证transNo长度为1"
+test_reg_rec_transNo_1 :
+  context:
+    appID: '1103'
+    transNo: '1'
+    userName: ''
+    transType: "00"
+    authType: "00"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: ''
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"19": "fido指纹，注册发起：验证transNo长度为128"
+test_reg_rec_transNo_128 :
+  context:
+    appID: '1103'
+    transNo: '11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111'
+    userName: ''
+    transType: "00"
+    authType: "00"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: ''
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"20": "fido指纹，注册发起：验证transNo长度为129"
+test_reg_rec_transNo_129 :
+  context:
+    appID: '1103'
+    transNo: '111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111'
+    userName: ''
+    transType: "00"
+    authType: "00"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: ''
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"21": "fido指纹，注册发起：验证transNo为空"
+test_reg_rec_transNo_0 :
+  context:
+    appID: '1103'
+    transNo: ''
+    userName: ''
+    transType: "00"
+    authType: "00"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: ''
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"22": "fido指纹，注册发起：验证userName长度为1"
+test_reg_rec_userName_1 :
+  context:
+    appID: '1103'
+    transNo: 'test-66666666666'
+    userName: 'u'
+    transType: "00"
+    authType: "00"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: ''
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"23": "fido指纹，注册发起：验证userName长度为128"
+test_reg_rec_userName_128 :
+  context:
+    appID: '1103'
+    transNo: 'test-66666666666'
+    userName: '11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111'
+    transType: "00"
+    authType: "00"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: ''
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"24": "fido指纹，注册发起：验证userName长度为129"
+test_reg_rec_userName_129 :
+  context:
+    appID: '1103'
+    transNo: 'test-66666666666'
+    userName: '111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111'
+    transType: "00"
+    authType: "00"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: ''
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"25": "fido指纹，注册发起：验证userName为空，userName值-1代表空"
+test_reg_rec_userName_0 :
+  context:
+    appID: '1103'
+    transNo: 'test-66666666666'
+    userName: '-1'
+    transType: "00"
+    authType: "00"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: ''
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"26": "fido指纹，注册发起：验证appID长度为1"
+test_reg_rec_appID_1 :
+  context:
+    appID: '1'
+    transNo: 'test-66666666666'
+    userName: ''
+    transType: "00"
+    authType: "00"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: ''
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"27": "fido指纹，注册发起：验证appID长度为128"
+test_reg_rec_appID_128 :
+  context:
+    appID: '11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111'
+    transNo: 'test-66666666666'
+    userName: ''
+    transType: "00"
+    authType: "00"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: ''
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"28": "fido指纹，注册发起：验证appID长度为129"
+test_reg_rec_appID_129 :
+  context:
+    appID: '111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111'
+    transNo: 'test-66666666666'
+    userName: ''
+    transType: "00"
+    authType: "00"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: ''
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"29": "fido指纹，注册发起：验证appID长度为0"
+test_reg_rec_appID_0 :
+  context:
+    appID: ''
+    transNo: 'test-66666666666'
+    userName: ''
+    transType: "00"
+    authType: "00"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: ''
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"30": "fido指纹，注册发起：验证transType长度为1"
+test_reg_rec_transType_1 :
+  context:
+    appID: '1103'
+    transNo: 'test-66666666666'
+    userName: ''
+    transType: "0"
+    authType: "00"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: ''
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"31": "fido指纹，注册发起：验证transType长度为3"
+test_reg_rec_transType_3 :
+  context:
+    appID: '1103'
+    transNo: 'test-66666666666'
+    userName: ''
+    transType: "000"
+    authType: "00"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: ''
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"32": "fido指纹，注册发起：验证transType长度为0"
+test_reg_rec_transType_0 :
+  context:
+    appID: '1103'
+    transNo: 'test-66666666666'
+    userName: ''
+    transType: ""
+    authType: "00"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: ''
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"33": "fido指纹，注册发起：验证authType长度为1"
+test_reg_rec_authType_1 :
+  context:
+    appID: '1103'
+    transNo: 'test-66666666666'
+    userName: ''
+    transType: "00"
+    authType: "0"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: ''
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"34": "fido指纹，注册发起：验证authType长度为3"
+test_reg_rec_authType_3 :
+  context:
+    appID: '1103'
+    transNo: 'test-66666666666'
+    userName: ''
+    transType: "00"
+    authType: "000"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: ''
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"35": "fido指纹，注册发起：验证authType长度为0"
+test_reg_rec_authType_0 :
+  context:
+    appID: '1103'
+    transNo: 'test-66666666666'
+    userName: ''
+    transType: "00"
+    authType: ""
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: ''
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"36": "fido指纹，注册发起：验证deviceID长度为1"
+test_reg_rec_deviceID_1 :
+  context:
+    appID: '1103'
+    transNo: 'test-66666666666'
+    userName: ''
+    transType: "00"
+    authType: "00"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: 'd'
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"37": "fido指纹，注册发起：验证deviceID长度为128"
+test_reg_rec_deviceID_128 :
+  context:
+    appID: '1103'
+    transNo: 'test-66666666666'
+    userName: ''
+    transType: "00"
+    authType: "00"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: '11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111'
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"38": "fido指纹，注册发起：验证deviceID长度为129"
+test_reg_rec_deviceID_129 :
+  context:
+    appID: '1103'
+    transNo: 'test-66666666666'
+    userName: ''
+    transType: "00"
+    authType: "00"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: '111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111'
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+
+#"39": "fido指纹，注册发起：验证deviceID长度为0"
+test_reg_rec_deviceID_0 :
+  context:
+    appID: '1103'
+    transNo: 'test-66666666666'
+    userName: ''
+    transType: "00"
+    authType: "00"
+    opType: "00"
+    dn: eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    devices :
+      deviceID: '-1'
+      deviceName: HUAWEI-P40
+      deviceType: HUAWEI
+####################################################################################################################
+
+#"40": "fido指纹，注册完成：验证opType长度为1"
+test_reg_send_opType_1 :
+  context:
+    appID:  '1103'
+    transNo: '66666666'
+    userName: ''
+    transType: "00"
+    authType: "00"
+    opType: "0"
+    ext: ''
+    from: '01'
+    devices:
+      deviceID: ''
+      deviceName: HUAWEI-P80
+      deviceType: HUAWEI
+      osVersion: 23
+      osType: android
+
+#"41": "fido指纹，注册完成：验证opType长度为3"
+test_reg_send_opType_3 :
+  context:
+    appID:  '1103'
+    transNo: '66666666'
+    userName: ''
+    transType: "00"
+    authType: "00"
+    opType: "000"
+    ext: ''
+    from: '01'
+    devices:
+      deviceID: ''
+      deviceName: HUAWEI-P80
+      deviceType: HUAWEI
+      osVersion: 23
+      osType: android
+
+#"42": "fido指纹，注册完成：验证opType长度为0"
+test_reg_send_opType_0 :
+  context:
+    appID:  '1103'
+    transNo: '66666666'
+    userName: ''
+    transType: "00"
+    authType: "00"
+    opType: ""
+    ext: ''
+    from: '01'
+    devices:
+      deviceID: ''
+      deviceName: HUAWEI-P80
+      deviceType: HUAWEI
+      osVersion: 23
+      osType: android
+
+##############################################################################################################
+
+#"43": "生成二维码"
+test_oob_generate :
+  context :
+    scanData : 'test'
+    isGen : False
+    userName : ''
+    appID : '1103'
+
+#"44": "获取二维码状态"
+test_oob_status :
+  context :
+    authToken : ''
+
+#"45": "获取用户所有证书注册信息"
+test_allinfo :
+  context :
+    userName : ''
+    transNo : '3333333333333333333333'
+    appID : '1103'
+    deviceID : ''
+
+#"46": "获取渠道appID信息"
+test_appid_info :
+  context :
+    transNo : '3333333333333333333333'
+    appID : '1103'
+    deviceID : ''
+
+#"47": "获取证书信息"
+test_cert_getinfo :
+  context :
+    transNo : '3333333333333333333333'
+    appID : '1103'
+    userName : ''
+
+"48": "证书激活"
+test_cert_activate :
+  context:
+    appID: '1103'
+    transNo: '8888888888'
+    userName: ''
+    transType: "00"
+    authType: "20"
+    devices :
+      deviceID: ''
+
+#"49": "证书更新"
+test_cert_update :
+  context:
+    appID: '1103'
+    transNo: '8888888888'
+    userName: ''
+    transType: "00"
+    authType: "20"
+    dn : eydjYXJkTk8nOiA2MzQ3MzA2NjEsICdjYXJkVHlwZSc6ICcwMScsICdjYXJkTmFtZSc6ICc2MzQ3MzA2NjB0ZXN0bmFtZSd9
+    regExt : test
+    authExt : eyJjYXJkTk8iOiAiMTIzNDU2Nzg5MTIzNDU2Nzg5IiwgImNhcmRUeXBlIjogIjAxIiwgImNhcmROYW1lIjogInRlc3QifQ
+    devices :
+      deviceID: ''
+
+#"50": "扫码发起"
+test_oob_receive :
+  context:
+    appID: '1103'
+    transNo: '8888888888'
+    userName: ''
+    transType: "00"
+    authType: "20"
+    devices :
+      deviceID: ''
+
+#"51": "计费设备查询：字段长度校验 验证securityLevel长度为1"
+test_dev_costed_securityLevel_1 :
+  context :
+    securityLevel : '1'
+    deviceID : ''
+
+#"52": "计费设备查询：字段长度校验 验证securityLevel长度为3"
+test_dev_costed_securityLevel_3 :
+  context :
+    securityLevel : '333'
+    deviceID : ''
+
+"53": "计费设备查询：字段长度校验 验证securityLevel长度为0"
+test_dev_costed_securityLevel_0 :
+  context :
+    securityLevel : ''
+    deviceID : ''

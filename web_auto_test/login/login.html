@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/login.css"/>
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.10.0/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/login.js"></script>
+
+    <script type="text/javascript">
+        // 解决cookie过期导航栏没跳转登录页面
+        $(document).ready(function () {
+        if (window !== top) {
+            top.location.href = location.href;
+         }
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="login-wrapper">
+            <div class="header">Login</div>
+            <div class="form-wrapper">
+                <input type="text" name="username" id="username" placeholder="username" class="input-item" required >
+                <input type="password" name="password" id="password"  placeholder="password" class="input-item" required >
+                <div class="btn" id="btn" onclick="login()">Login</div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
