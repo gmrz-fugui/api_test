@@ -1,0 +1,282 @@
+# 1、注册发起，可修改
+test_cert_reg_receive1 :
+  -
+    -
+      context :
+        appID: 1103
+        transNo: 999999999
+        userName: '张牛一'
+        transType: '00'
+        authType: '20'
+        dn: eyJjYXJkTk8iOiIxMjM0NTY3ODkxMjM0NTY3ODkiLCJjYXJkVHlwZSI6IjAxIiwiY2FyZE5hbWUiOiJ0ZXN0In0
+        devices:
+          deviceName: HUAWEI-P50
+          deviceType: HUAWEI
+          deviceID: 'hwzhangny'
+          deviceVersion: v-4.5.4
+    -
+      expect:
+        statusCode: 1200
+        description: OK
+        username: '张牛一'
+#  -
+#    -
+#      context :
+#        appID: 1103
+#        transNo: 999999999
+#        userName: 'zhangny'
+#        transType: '00'
+#        authType: '20'
+#        dn: eyJjYXJkTk8iOiIxMjM0NTY3ODkxMjM0NTY3ODkiLCJjYXJkVHlwZSI6IjAxIiwiY2FyZE5hbWUiOiJ0ZXN0In0
+#        devices:
+#          deviceName: HUAWEI-P50
+#          deviceType: HUAWEI
+#          deviceID: 'hwzhangny'
+#          deviceVersion: v-4.5.4
+#    -
+#      expect:
+#        statusCode: 1200
+#        description: OK
+#        username: 'zhangny'
+
+##################################################################################################
+# 以下为注册完成数据
+#注册发起
+test_cert_reg_receive2 :
+  context :
+    appID : 1103
+    transNo : 999999999
+    userName : 'hwzhangny'
+    transType : '00'
+    authType : '20'
+    dn : eyJjYXJkTk8iOiIxMjM0NTY3ODkxMjM0NTY3ODkiLCJjYXJkVHlwZSI6IjAxIiwiY2FyZE5hbWUiOiJ0ZXN0In0
+    devices :
+      deviceName : HUAWEI-P50
+      deviceType : HUAWEI
+      deviceID : 'hwzhangny'
+      deviceVersion : v-4.5.4
+# 完成
+test_cert_reg_send2 :
+  -
+    -
+       context :
+         appID: 1103
+         opType: '00'
+         transNo: 999999999
+         userName: 'hwzhangny'
+         transType: '00'
+         authType: 20
+         devices:
+           deviceID: 'hwzhangny'
+           deviceName: "HUAWEI NXT-AL10"
+           deviceType: "HUAWEI"
+           deviceAliasName: "HWNXT"
+           osVersion: 23
+           osType: "android"
+           imei: "869906024340331"
+           mac: "48:db:50:db:87:ad"
+         ext: ''
+         from: "01"
+    -
+      expect:
+        statusCode: 1200
+        description: OK
+        appID: 1103
+        userName: 'hwzhangny'
+        deviceID: 'hwzhangny'
+        auth_type: 20
+        exts:
+          id : 'cert'
+
+#######################################################################################################################
+#以下为认证发起数据
+# 注册发起
+test_cert_reg_receive3 :
+  context :
+    appID : 1103
+    transNo : 999999999
+    userName : 'zhangny'
+    transType : '00'
+    authType : '20'
+    dn : eyJjYXJkTk8iOiIxMjM0NTY3ODkxMjM0NTY3ODkiLCJjYXJkVHlwZSI6IjAxIiwiY2FyZE5hbWUiOiJ0ZXN0In0
+    devices :
+      deviceName : HUAWEI-P50
+      deviceType : HUAWEI
+      deviceID : 'hwzhangny'
+      deviceVersion : v-4.5.4
+# 注册完成
+test_cert_reg_send3 :
+  context:
+    appID: 1103
+    opType: '00'
+    transNo: 999999999
+    userName: 'zhangny'
+    transType: '00'
+    authType: 20
+    devices:
+      deviceID: 'hwzhangny'
+      deviceName: "HUAWEI NXT-AL10"
+      deviceType: "HUAWEI"
+      deviceAliasName: "HWNXT"
+      osVersion: 23
+      osType: "android"
+      imei: "869906024340331"
+      mac: "48:db:50:db:87:ad"
+    ext : ''
+    from : "01"
+#更新证书状态为已安装
+test_update_cert_status3:
+  context:
+    userName: 'zhangny'
+    appID : 1103
+    transNo : 999999999
+    keyID : ''
+
+# 认证发起
+test_cert_auth_receive3:
+  -
+    -
+      context:
+        appID: 1103
+        transNo: 999999999
+        userName: 'zhangny'
+        transType: '00'
+        authType: ['20']
+        devices:
+          deviceName : HUAWEI NXT-AL10
+          deviceType : HUAWEI
+          deviceID : 'hwzhangny'
+        transactionText: MTIzNDU2
+        ext: eyJzaG93RmxhZyI6IjAwIiwic2hvd1RleHQiOiLmlK_ku5gxMeWFgyJ9
+    -
+      expect:
+        statusCode: 1200
+        description: OK
+        op: 'Auth'
+  -
+    -
+      context:
+        appID: 1103
+        transNo: 999999999
+        userName: 'zhangny'
+        transType: '00'
+        authType: ['20']
+        devices:
+          deviceName : HUAWEI NXT-AL10
+          deviceType : HUAWEI
+          deviceID : 'hwzhangny'
+        transactionText: MTIzNDU2
+        ext: eyJzaG93RmxhZyI6IjAwIiwic2hvd1RleHQiOiLmlK_ku5gxMeWFgyJ9
+    -
+      expect:
+        statusCode: 1200
+        description: OK
+        op: 'Auth'
+
+#################################################################################################################################
+#以下是认证完成数据
+#1、注册发起
+test_cert_reg_receive4 :
+  context :
+    appID : 1103
+    transNo : 999999999
+    userName : 'zhangny123'
+    transType : '00'
+    authType : '20'
+    dn : eyJjYXJkTk8iOiIxMjM0NTY3ODkxMjM0NTY3ODkiLCJjYXJkVHlwZSI6IjAxIiwiY2FyZE5hbWUiOiJ0ZXN0In0
+    devices :
+      deviceName : HUAWEI-P50
+      deviceType : HUAWEI
+      deviceID : 'hwzhangny123'
+      deviceVersion : v-4.5.4
+# 2、注册完成
+test_cert_reg_send4 :
+  context:
+    appID: 1103
+    opType: '00'
+    transNo: 999999999
+    userName: 'zhangny123'
+    transType: '00'
+    authType: 20
+    devices:
+      deviceID: 'hwzhangny123'
+      deviceName: "HUAWEI NXT-AL10"
+      deviceType: "HUAWEI"
+      deviceAliasName: "HWNXT"
+      osVersion: 23
+      osType: "android"
+      imei: "869906024340331"
+      mac: "48:db:50:db:87:ad"
+    ext : ''
+    from : "01"
+#3、更新证书状态为已安装
+test_update_cert_status4:
+  context:
+    userName: 'zhangny123'
+    appID : 1103
+    transNo : 999999999
+    keyID : ''
+
+# 4、认证发起
+test_cert_auth_receive4:
+  context:
+    appID: 1103
+    transNo: 999999999
+    userName: 'zhangny123'
+    transType: '00'
+    authType: ['20']
+    devices:
+      deviceName : HUAWEI NXT-AL10
+      deviceType : HUAWEI
+      deviceID : 'hwzhangny123'
+    transactionText: MTIzNDU2
+    ext: eyJzaG93RmxhZyI6IjAwIiwic2hvd1RleHQiOiLmlK_ku5gxMeWFgyJ9
+
+# 5、认证完成
+test_cert_auth_send4 :
+  -
+    -
+      context:
+        userName : 'zhangny123'
+        transNo : 999999999
+        transType : '00'
+        authType : ['20']
+        appID : 1103
+        authToken : ''
+        authData : ''
+        extra : '0'
+        functionType: ''
+        ext: eyJzaG93RmxhZyI6IjAwIiwic2hvd1RleHQiOiLmlK_ku5gxMeWFgyJ9
+    -
+      expect :
+        statusCode: 1200
+        description: OK
+        appID: 1103
+        userName: 'zhangny123、'
+        deviceID: 'hwzhangny123'
+        exts: 'p7data'
+        auth_type: 20
+        sign_counter: 256
+  -
+    -
+      context:
+        userName : 'zhangny123'
+        transNo : 999999999
+        transType : '00'
+        authType : ['20']
+        appID : 1103
+        authToken : ''
+        authData : ''
+        extra : '0'
+        functionType: ''
+        ext: eyJzaG93RmxhZyI6IjAwIiwic2hvd1RleHQiOiLmlK_ku5gxMeWFgyJ9
+    -
+      expect :
+        statusCode: 1200
+        description: OK
+        appID: 1103
+        userName: 'zhangny123'
+        deviceID: 'hwzhangny123'
+        exts: 'p7data'
+        auth_type: 20
+        sign_counter: 256
